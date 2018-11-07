@@ -4,6 +4,21 @@ this modification includes the exclution of image text data being polled by the 
 
 Poll the system clipboard for changing text or image data.
 
+##
+Differences between 1 and 2: 
+
+`--  onTextChange callback now returns an object with 2 properties`
+
+```
+{
+  isImage: [bool], // Is the copied content image data
+  text: [string] // Copied content
+}
+```
+
+
+
+
 ## Install
 
 `npm install --save electron-clipboard-watcher2`
