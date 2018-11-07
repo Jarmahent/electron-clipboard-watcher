@@ -1,10 +1,12 @@
-# electron-clipboard-watcher
+# electron-clipboard-watcher2
+This is a modified version of electron-clipboard-watcher,
+this modification includes the exclution of image text data being polled by the watcher
 
 Poll the system clipboard for changing text or image data.
 
 ## Install
 
-`npm install --save electron-clipboard-watcher`
+`npm install --save electron-clipboard-watcher2`
 
 ## Usage
 
