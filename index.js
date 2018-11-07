@@ -1,7 +1,8 @@
-'use strict'
+/* eslint-disable */
 
-const electron = require('electron')
-const clipboard = electron.clipboard
+'use strict';
+const electron = require('electron');
+const clipboard = electron.clipboard;
 
 /*
 
@@ -32,40 +33,46 @@ watcher.stop()
 ```
 
 */
-module.exports = function (opts) {
-  opts = opts || {}
-  const watchDelay = opts.watchDelay || 1000
+module.exports = function(opts) {
+  opts = opts || {};
+  const watchDelay = opts.watchDelay || 1000;
 
-  let lastText = clipboard.readText()
-  let lastImage = clipboard.readImage()
+  let lastText = clipboard.readText();
+  let lastImage = clipboard.readImage();
+  let isImage;
 
   const intervalId = setInterval(() => {
-    const text = clipboard.readText()
-    const image = clipboard.readImage()
+    const text = clipboard.readText();
+    const image = clipboard.readImage();
 
     if (opts.onImageChange && imageHasDiff(image, lastImage)) {
-      lastImage = image
-      return opts.onImageChange(image)
+      lastImage = image;
+      isImage = true;
+      return opts.onImageChange(image);
+    }
+    if (opts.onTextChange && textHasDiff(text, lastText)) {
+      lastText = text;
+      return opts.onTextChange({
+        isImage: isImage,
+        text: text
+      });
     }
 
-    if (opts.onTextChange && textHasDiff(text, lastText)) {
-      lastText = text
-      return opts.onTextChange(text)
-    }
-  }, watchDelay)
+    isImage = false;
+  }, watchDelay);
 
   return {
     stop: () => clearInterval(intervalId)
-  }
-}
+  };
+};
 
 /*
 
 Tell if there is any difference between 2 images
 
 */
-function imageHasDiff (a, b) {
-  return !a.isEmpty() && b.toDataURL() !== a.toDataURL()
+function imageHasDiff(a, b) {
+  return !a.isEmpty() && b.toDataURL() !== a.toDataURL();
 }
 
 /*
@@ -73,6 +80,6 @@ function imageHasDiff (a, b) {
 Tell if there is any difference between 2 strings
 
 */
-function textHasDiff (a, b) {
-  return a && b !== a
+function textHasDiff(a, b) {
+  return a && b !== a;
 }

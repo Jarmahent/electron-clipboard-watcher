@@ -1,7 +1,7 @@
 {
-  "name": "electron-clipboard-watcher",
-  "version": "1.0.1",
-  "description": "",
+  "name": "electron-clipboard-watcher2",
+  "version": "1.0.2",
+  "description": "Modifed version of electron clipboard watcher",
   "main": "index.js",
   "scripts": {
     "lint": "standard",
@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/joshwnj/electron-clipboard-watcher.git"
+    "url": "https://github.com/Jarmahent/electron-clipboard-watcher"
   },
   "keywords": [],
   "author": "joshwnj",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/joshwnj/electron-clipboard-watcher/issues"
+    "url": "https://github.com/Jarmahent/electron-clipboard-watcher/issues"
   },
-  "homepage": "https://github.com/joshwnj/electron-clipboard-watcher",
+  "homepage": "https://github.com/Jarmahent/electron-clipboard-watcher",
   "devDependencies": {
     "standard": "^7.1.2"
   }
